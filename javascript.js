@@ -36,9 +36,11 @@ console.log(test);
 console.log(test.info())
 
 function addBookToLibrary() {
-
+  console.log('hi')
 }
 
+const addBook = document.getElementById('add');
+addBook.addEventListener("click", addBookToLibrary)
 
 
 const newCard = document.createElement("div");
@@ -59,10 +61,12 @@ newRead.textContent = "Not Read"
 const newButtons = document.createElement('div')
 newButtons.classList.add('buttons')
 const remove = document.createElement('button');
-remove.classList.add('card-button', 'remove')
+remove.classList.add('card-button')
+remove.id = 'remove'
 remove.textContent = "Remove Book"
 const change = document.createElement('button');
-change.classList.add('card-button', 'change-read')
+change.classList.add('card-button')
+change.id= 'change'
 change.textContent = "Change Read"
 
 newButtons.appendChild(remove)

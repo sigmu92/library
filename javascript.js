@@ -29,19 +29,72 @@ Book.prototype.info = function() {
   }
 }
 
-const test = new Book();
-console.log(test);
-test.isRead();
-console.log(test);
-console.log(test.info())
+const popForm = document.getElementById("popup");
+const submitBut = document.getElementById('submit');
+const closeBut = document.getElementById('close');
+const inputField = document.getElementById('new-book');
+const mainPage = document.getElementsByClassName("main")[0]
 
-function addBookToLibrary() {
-  console.log('hi')
+
+closeBut.addEventListener('click', closeForm)
+submitBut.addEventListener('click', addBookToLibrary)
+
+
+
+function removeBook(e) {
+  myLibrary.splice(e.target.id,1)
+  for (let i = 0; i<myLibrary.length; i++) {
+    myLibrary[i]['id'] = i
+  }
+  updateCards()
 }
 
+function changeStatus(e) {
+  if (myLibrary[e.target.id]['read'] == false) {
+    myLibrary[e.target.id]['read'] = true;
+  } else {
+    myLibrary[e.target.id]['read'] = false;
+  }
+  updateCards()
+}
+
+function addBookToLibrary() {
+  event.preventDefault
+  const newTitle = inputField[0]['value']
+  const newAuthor = inputField[1]['value']
+  const newPages = inputField[2]['value']
+  let readStatus = false;
+  if (inputField[3]['checked']) {
+    readStatus = true;
+  }
+  myLibrary.push(new Book(newTitle,newAuthor,newPages,readStatus))
+  console.log(myLibrary)
+  closeForm()
+  updateCards()
+}
+
+function showForm(){
+  popForm.style.display='block'
+}
+
+function closeForm(){
+  popForm.style.display="none"
+  inputField[0]['value'] = "";
+  inputField[1]['value'] = "";
+  inputField[2]['value'] = "";
+  inputField[3]['checked'] = false;
+  inputField[4]['checked'] = true;
+}
+
+function updateCards() {
+  while (mainPage.firstChild) {
+    mainPage.removeChild(mainPage.lastChild)
+  }
+  myLibrary.forEach(book => createCard(book))
+}
 
 const addBook = document.getElementById('add');
-addBook.addEventListener("click", addBookToLibrary)
+addBook.addEventListener("click", showForm)
 
 function createCard(book) {
   const newCard = document.createElement("div");
@@ -66,13 +119,13 @@ function createCard(book) {
   const newButtons = document.createElement('div')
   newButtons.classList.add('buttons')
   const remove = document.createElement('button');
-  remove.classList.add('card-button')
-  remove.id = 'remove'
+  remove.classList.add('card-button', 'remove')
   remove.textContent = "Remove Book"
+  remove.id = book.id;
   const change = document.createElement('button');
-  change.classList.add('card-button')
-  change.id= 'change'
+  change.classList.add('card-button', 'change')
   change.textContent = "Change Read"
+  change.id = book.id;
 
   newButtons.appendChild(remove)
   newButtons.appendChild(change)
@@ -83,9 +136,16 @@ function createCard(book) {
   newCard.appendChild(newRead)
   newCard.appendChild(newButtons)
 
+  
 
   const mainPage = document.getElementsByClassName("main")[0]
   mainPage.appendChild(newCard)
+
+  const removeBut = document.querySelectorAll('.remove')
+  const changeBut = document.querySelectorAll('.change')
+  removeBut.forEach(button => button.addEventListener('click', removeBook))
+  changeBut.forEach(button => button.addEventListener('click', changeStatus))
+
 
 }
 

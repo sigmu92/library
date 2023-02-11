@@ -63,6 +63,11 @@ button:active {
   box-shadow: 0px 0px 5px var(--font-color);
 }
 
+.container {
+  padding:2%;
+  background-color: var(--background-color);
+}
+
 .main {
   background-color: var(--background-color);
   height: 100%;
@@ -110,7 +115,7 @@ button:active {
 
 
 .popup {
-  display: block;
+  display: none;
   position: absolute;
   top: 30%;
   left:40%;
@@ -136,10 +141,6 @@ input{
   color: var(--font-color);
   padding-left: 10px;
 }
-
-
-
-
 
 input:focus{
   border-style: none;

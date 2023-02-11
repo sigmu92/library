@@ -7,12 +7,14 @@ let myLibrary = [];
  * @param {string} author - author of the book
  * @param {BigInteger} pages - number of pages
  * @param {boolean} read - read or not
+ * @param {BigInteger} id - id of the book
  */
-function Book(title = 'Unknown', author = 'Unknown', pages = 0, read = false) {
+function Book(title = 'Unknown', author = 'Unknown', pages = 0, read = false, id = myLibrary.length) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.id = id;
 }
 
 Book.prototype.isRead = function() {
@@ -41,6 +43,7 @@ function addBookToLibrary() {
 
 const newCard = document.createElement("div");
 newCard.classList.add('book-card')
+newCard.id = '1';
 const newTitle = document.createElement('div');
 newTitle.classList.add('title')
 newTitle.textContent = "Unknown"

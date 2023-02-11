@@ -1,0 +1,114 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+ @font-face {
+  font-family: roboto;
+  src: url(fonts/Roboto-Regular.ttf);
+ }
+
+:root {
+  --font-color: #8338ec;
+  --background-color: black;
+  --font-used: roboto;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+}
+
+button {
+  border: 2px solid var(--font-color);
+  border-radius: 30px;
+  font-family: roboto;
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+
+.header {
+  height: 100%;
+  display: grid;
+  background-color: var(--background-color);
+  grid-template-columns: repeat(5, 1fr
+  );
+}
+
+.page-title {
+  grid-column-start: 3;
+  justify-self: center;
+  align-self: center;
+  font-size: 3rem;
+  font-family: roboto;
+  color: var(--font-color);
+  
+}
+
+.add-book {
+  grid-column-start: 5;
+  height: 50%;
+  width: 66%;
+  justify-self: center;
+  align-self: center;
+  font-size: 1.5rem;
+  min-width: 120px;
+}
+
+button:active {
+  background-color: var(--font-color);
+  color: var(--background-color);
+  box-shadow: 0px 0px 5px var(--font-color);
+}
+
+.main {
+  background-color: var(--background-color);
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  grid-template-rows: repeat(3, 1fr);
+  
+  
+}
+
+.book-card {
+  border: 2px solid var(--font-color);
+  border-radius: 5px;
+  font-family: roboto;
+  color: var(--font-color);
+  background: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10% 10%;
+  gap: 5%;
+  overflow: hidden;
+  min-width: 120px;
+}
+
+.title{
+  font-size: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 10%;
+}
+
+.card-button {
+  font-size: .70rem;
+  padding: 5px 5px;
+}
+
+.card-button {
+  font-size: .70rem;
+  padding: 5px 5px;
+}
+
+
+
+
+

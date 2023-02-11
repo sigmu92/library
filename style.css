@@ -109,6 +109,65 @@ button:active {
 }
 
 
+.popup {
+  display: block;
+  position: absolute;
+  top: 30%;
+  left:40%;
+  height: 240px;
+  width: 200px;
+  border: 2px solid var(--font-color);
+  background-color: var(--font-color);
+  color: var(--background-color);
+  padding: 3%;
+  border-style: none;
+  border-radius: 5px;
+}
 
+h2 {
+  margin-bottom: 20px;
+}
+
+input{
+  margin-bottom: 20px;
+  border-style: none;
+  border-radius: 20px;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  padding-left: 10px;
+}
+
+
+
+
+
+input:focus{
+  border-style: none;
+  outline-style: none;
+}
+
+.pop-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#close {
+  height: 30px;
+  width: 50px;
+}
+
+#close:active {
+  border: 2px solid var(--background-color);
+}
+
+#submit{
+  height: 30px;
+  width: 50px;
+  margin-left: 21px;
+}
+
+#submit:active {
+  border: 2px solid var(--background-color);
+}
 
 

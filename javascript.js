@@ -5,11 +5,11 @@ let myLibrary = [];
  * @constructor
  * @param {string} title - title of the book
  * @param {string} author - author of the book
- * @param {BigInteger} pages - number of pages
+ * @param {string} pages - number of pages
  * @param {boolean} read - read or not
  * @param {BigInteger} id - id of the book
  */
-function Book(title = 'Unknown', author = 'Unknown', pages = 0, read = false, id = myLibrary.length) {
+function Book(title = 'Unknown', author = 'Unknown', pages = '0', read = false, id = myLibrary.length) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -39,45 +39,53 @@ function addBookToLibrary() {
   console.log('hi')
 }
 
+
 const addBook = document.getElementById('add');
 addBook.addEventListener("click", addBookToLibrary)
 
+function createCard(book) {
+  const newCard = document.createElement("div");
+  newCard.classList.add('book-card')
+  newCard.id = book.id;
+  const newTitle = document.createElement('div');
+  newTitle.classList.add('title')
+  newTitle.textContent = book.title;
+  const newAuthor = document.createElement('div');
+  newAuthor.classList.add('author')
+  newAuthor.textContent = book.author
+  const newPages = document.createElement('div');
+  newPages.classList.add('pages')
+  newPages.textContent = book.pages
+  const newRead = document.createElement('div');
+  newRead.classList.add('read')
+  if (book.read) {
+    newRead.textContent = "Read"
+  } else {
+    newRead.textContent = "Not Read"
+  }  
+  const newButtons = document.createElement('div')
+  newButtons.classList.add('buttons')
+  const remove = document.createElement('button');
+  remove.classList.add('card-button')
+  remove.id = 'remove'
+  remove.textContent = "Remove Book"
+  const change = document.createElement('button');
+  change.classList.add('card-button')
+  change.id= 'change'
+  change.textContent = "Change Read"
 
-const newCard = document.createElement("div");
-newCard.classList.add('book-card')
-newCard.id = '1';
-const newTitle = document.createElement('div');
-newTitle.classList.add('title')
-newTitle.textContent = "Unknown"
-const newAuthor = document.createElement('div');
-newAuthor.classList.add('author')
-newAuthor.textContent = "Unknown"
-const newPages = document.createElement('div');
-newPages.classList.add('pages')
-newPages.textContent = "Unknown"
-const newRead = document.createElement('div');
-newRead.classList.add('read')
-newRead.textContent = "Not Read"
-const newButtons = document.createElement('div')
-newButtons.classList.add('buttons')
-const remove = document.createElement('button');
-remove.classList.add('card-button')
-remove.id = 'remove'
-remove.textContent = "Remove Book"
-const change = document.createElement('button');
-change.classList.add('card-button')
-change.id= 'change'
-change.textContent = "Change Read"
+  newButtons.appendChild(remove)
+  newButtons.appendChild(change)
 
-newButtons.appendChild(remove)
-newButtons.appendChild(change)
-
-newCard.appendChild(newTitle)
-newCard.appendChild(newAuthor)
-newCard.appendChild(newPages)
-newCard.appendChild(newRead)
-newCard.appendChild(newButtons)
+  newCard.appendChild(newTitle)
+  newCard.appendChild(newAuthor)
+  newCard.appendChild(newPages)
+  newCard.appendChild(newRead)
+  newCard.appendChild(newButtons)
 
 
-const mainPage = document.getElementsByClassName("main")[0]
-mainPage.appendChild(newCard)
+  const mainPage = document.getElementsByClassName("main")[0]
+  mainPage.appendChild(newCard)
+
+}
+

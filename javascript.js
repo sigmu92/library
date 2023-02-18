@@ -9,23 +9,27 @@ let myLibrary = [];
  * @param {boolean} read - read or not
  * @param {BigInteger} id - id of the book
  */
-function Book(title = 'Unknown', author = 'Unknown', pages = '0', read = false, id = myLibrary.length) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = id;
-}
 
-Book.prototype.isRead = function() {
-  this.read = true;
-};
+class Book {
 
-Book.prototype.info = function() {
-  if (this.read) {
-    return (`${this.title} by ${this.author}, ${this.pages} pages, read`);
-  } else {
-    return (`${this.title} by ${this.author}, ${this.pages} pages, not yet read`);
+  constructor(title = 'Unknown', author = 'Unknown', pages = '0', read = false, id = myLibrary.length) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.id = id;
+  }
+
+  isRead() {
+    this.read = true;
+  }
+
+  info() {
+    if (this.read) {
+      return (`${this.title} by ${this.author}, ${this.pages} pages, read`);
+    } else {
+      return (`${this.title} by ${this.author}, ${this.pages} pages, not yet read`);
+    }
   }
 }
 
@@ -68,7 +72,6 @@ function addBookToLibrary() {
     readStatus = true;
   }
   myLibrary.push(new Book(newTitle,newAuthor,newPages,readStatus))
-  console.log(myLibrary)
   closeForm()
   updateCards()
 }
